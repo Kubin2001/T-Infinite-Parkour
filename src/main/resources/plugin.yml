@@ -1,0 +1,4 @@
+name: TInfiniteParkour
+version: '1.0-SNAPSHOT'
+main: org.T.tInfiniteParkour.TInfiniteParkour
+api-version: '1.21'
