@@ -7,6 +7,8 @@ public final class TInfiniteParkour extends JavaPlugin {
     @Override
     public void onEnable () {
 	// Plugin startup logic
+        Helpers.Init ();
+        getCommand ("place").setExecutor (new PlaceCommand ());
 
     }
 

@@ -1,5 +1,6 @@
 package org.T.tInfiniteParkour;
 
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 
@@ -7,19 +8,14 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
+import java.nio.Buffer;
 import java.time.LocalDateTime;
 import java.util.*;
 
 public class Helpers {
-    private static Random rand = null;
+    private static final Random rand = new Random();
 
-    public static Map<UUID, Integer> data = null;
-    public static Map<UUID, LocalDateTime> dates = null;
-
-    public static void Init(Map<UUID, Integer> dataMap, Map<UUID, LocalDateTime> datesMap) {
-        data = dataMap;
-        dates = datesMap;
-        rand = new Random();
+    public static void Init() {
     }
 
     public static String CFormat(String s) {
@@ -39,6 +35,10 @@ public class Helpers {
         ItemStack retItem = new ItemStack(mat);
 
         ItemMeta meta = retItem.getItemMeta();
+        if(meta == null){
+            Bukkit.getLogger ().info ("Cannot change item meta in Create Item Method");
+            return retItem;
+        }
         meta.setDisplayName(Helpers.CFormat(name));
         List<String> lore = new ArrayList<>();
         lore.add(Helpers.CFormat(desc));
